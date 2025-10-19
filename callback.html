@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8">
+<title>ViralApp OAuth Callback</title>
+<style>body{font-family:system-ui,Segoe UI,Roboto;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}</style>
+<h2>ViralApp OAuth Callback</h2>
+<p id="msg">Reading parameters…</p>
+<script>
+  const qs = new URLSearchParams(location.search);
+  const code = qs.get("code"); const state = qs.get("state"); const err = qs.get("error");
+  document.getElementById("msg").innerHTML = err
+    ? "Error: <b>"+err+"</b>"
+    : code ? ("Auth <b>OK</b>. Code:<br><code>"+code+"</code><br>State: <code>"+(state||"-")+"</code>") 
+           : "No code received.";
+</script>
